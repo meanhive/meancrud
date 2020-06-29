@@ -1,0 +1,48 @@
+doctype html
+html
+    head
+        title="Product CRUD"
+        link(href="https://bootswatch.com/3/flatly/bootstrap.min.css",type="text/css",rel="stylesheet")
+        meta(name="viewport",content="width=device-width,initial-scale=-1")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    body
+        nav.navbar.navbar-inverse
+            .container
+                .navbar-header
+                    a(class="navbar-brand", href="/") Product CRUD
+                    button(class="navbar-toggle",data-target="#myMenu",data-toggle="toggle")
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                div(class="collapse navbar-collapse", id="myMenu")
+                    ul.nav.navbar-nav
+                        li
+                            a(href="/") Products
+                        li
+                            a(href="/create") Create
+
+        .container 
+            .row
+                .col-md-12.col-sm-12.jumbotron.text-center
+                    h1="Product Pug Example"
+            .row
+            for x in products
+                .col-md-4
+                    .panel.panel-primary
+                        .panel-heading
+                            h1.panel-title=x['title']
+                        .panel-body
+                            img(src=x['image'], alt=x['title'],class="img-responsive img-thumbnail")
+                            ul.list-group
+                                li.list-group-item Price
+                                    span.pull-right=x['price']
+                                li.list-group-item Company
+                                    span.pull-right=x['company']
+                                li.list-group-item Description
+                                    span.pull-right=x['description']
+                        .panel-footer
+                            a(class="btn btn-info", href="/edit/"+ x['_id'])
+                                span.glyphicon.glyphicon-edit
+                            a(class="btn btn-danger pull-right", href="/delete/" + x['_id'])
+                                span.glyphicon.glyphicon-trash

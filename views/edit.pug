@@ -1,0 +1,48 @@
+doctype html
+html
+    head
+        title="Product CRUD"
+        link(href="https://bootswatch.com/3/flatly/bootstrap.min.css",type="text/css",rel="stylesheet")
+        meta(name="viewport",content="width=device-width,initial-scale=-1")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    body
+        nav.navbar.navbar-inverse
+            .container
+                .navbar-header
+                    a(class="navbar-brand", href="/") Product CRUD
+                    button(class="navbar-toggle",data-target="#myMenu",data-toggle="toggle")
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                div(class="collapse navbar-collapse", id="myMenu")
+                    ul.nav.navbar-nav
+                        li
+                            a(href="/") Products
+                        li
+                            a(href="/create") Create
+
+        .container 
+            .row
+                .col-md-12.col-sm-12.jumbotron.text-center
+                    h1="Edit Product"
+            .row
+                .col-md-6.col-md-offset-3.well
+                    form(action="/edit/" + product['_id'],method="POST",autocomplete="off")
+                        .form-group
+                            label="Title"
+                            input(type="text",class="form-control",name="title",placeholder="Enter title",value=product['title'],required)
+                        .form-group
+                            label="Price"
+                            input(type="number",class="form-control",name="price",placeholder="Enter price",value=product['price'],required)
+                        .form-group
+                            label="Image"
+                            input(type="url",class="form-control",name="image",placeholder="Enter Image Url",value=product['image'],required)
+                        .form-group
+                            label="Company"
+                            input(type="text",class="form-control",name="company",placeholder="Enter Company",value=product['company'], required)
+                        .form-group
+                            label="Description"
+                            input(type="text",class="form-control",name="description",placeholder="Enter Desc", value=product['description'] required)
+                        .form-group
+                            input(type="submit",class="btn btn-info",value="Update")
